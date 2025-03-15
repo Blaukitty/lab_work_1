@@ -12,19 +12,24 @@ on:
 
 jobs:
   build:
-    runs-on: linux ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Install dependencies
-      - run: |
+        run: |
           sudo apt update
-          sudo apt install -y build-essential libgtest-dev
+          sudo apt install -y build-essential cmake libgtest-dev
 
-      - name: build
+      - name: Configure CMake
         run: |
-          g++ FINALLGAME.cpp -o FINALLGAME 
-      - name: run
+          cmake -B build -S .
+
+      - name: Build project
         run: |
-         ./FINALLGAME  
+          cmake --build build --config Release
+
+      - name: Run executable
+        run: |
+          ./build/game
