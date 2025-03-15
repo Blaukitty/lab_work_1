@@ -1,0 +1,56 @@
+Functional requirements:
+- Game interface:
+        - The game should be a text-based interface that displays the current character attributes and available actions.
+        
+    - Launching the game:
+        - When starting the game, its name and icons should appear with the choice of the character's class and race.
+        
+    - The battle system:
+        - The player has the opportunity to escape, fight a monster or throw a card to the opponent. If the player gets a treasure card,
+        he just takes it, but the player cannot have more than six cards in his hands, so he will have to choose which card to discard from those
+in his hands. If he gets a poison apple or poison card, then he just gets the effect of the card without taking it. 
+        bail. All the money that the player has collected during the turn is automatically converted into a level. Leveling up increases all stats
+        One at a time.
+        - After the player's battle is over, the AI does its own battle.
+        - After completing the bet, both players receive one card from each deck.
+        
+    - End of the game:
+        - The game ends when the player dies.
+        - The game ends when the AI dies.
+        - The game ends when the levels are compared at the end of the game (including all treasure maps), the one whose level is higher wins.
+
+        
+  Game example:
+
+1 - The player chooses an elf race (automatically +2 for speed) and a knight class (+2 for defense), and the AI has to be a dwarf (+2 for defense) hunter 
+        (+2 damage). The initial settings are such that each characteristic is 1.
+    2 - The player gets cards from the "clothes" - lady gloves (+1 level) and T-shirt protection (+1 protection), he got a monster troll from the "doors".
+        (3 levels, 2 coins (for defeating him), 4 defense, 1 speed, 2 damage) and belodonna poison (-1 level). These cards are just lying on his chest.
+        hands. AI maps are not known.
+    3 - A card from the door deck is displayed on the field - this is a robber (1 level, 0.5 coins, 2 speed, 1 damage, 1 defense). The player can escape,
+        since his speed is lower, but in this case he will not receive coins, that is, he will not raise the level. The player gets the right to fight because 
+        his level is higher than the robber's, He can defeat him, since the player's damage is 2, defense is 3, which removes the robber's damage by
+1.5 (half the defense), so 2 against -0.5. The player won. He received 0.5 coins. to get the second level, you need 1.
+    4 - The AI's move. The same thing is happening. But with different cards. Before the start of the battle, the player decides to throw the troll card to the AI, in this case, the levels are not
+        summed up - only the level of the card that fell out of the deck matters. Only the characteristics are summarized. The AI is winning. He gets
+        coins for both monsters you defeated.
+    5 - Both players receive one more card from each deck. The player has spent a troll, so he gets an additional one.a map from the doors. The characteristics are updated.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
