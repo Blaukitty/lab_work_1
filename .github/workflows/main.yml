@@ -1,0 +1,30 @@
+name: C++ CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: linux ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install dependencies
+      - run: |
+          sudo apt update
+          sudo apt install -y build-essential libgtest-dev
+
+      - name: build
+        run: |
+          g++ FINALLGAME.cpp -o FINALLGAME 
+      - name: run
+        run: |
+         ./FINALLGAME  
