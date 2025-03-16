@@ -3,4 +3,4 @@ project(game)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(game game2.0.cpp)
+add_executable(game game2.cpp)
