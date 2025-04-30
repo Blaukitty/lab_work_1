@@ -237,87 +237,74 @@ public:
     } 
 };
 
-
 class Doors_deck {
+private:
+    deque<pair<string, vector<int>>> deck;
+
 public:
-    vector<string> doors; // íàçâàíèÿ äâåðåé  
-    vector<int> charactD;  // õàðàêòåðèñòèêè äâåðåé
-    vector<string> YourDoors0; //ïî óìîë÷àíèþ, âûäàþòñÿ èãðîêó â íà÷àëå
-    vector<vector<int>> YourDoorsData;
+    Doors_deck(const Poison_apple& p_a, const Acid& ac, const Treasure& t, const Monsters& m) {
+        auto apples = p_a.GetAppleID();
+        auto acids = ac.GetAcidID();
+        auto treasures = t.GetTreasureID();
+        auto monsters = m.GetMonsterName();
 
-    Doors_deck(const Poison_apple& p_a, const Acid& ac, const Treasure& t, const Monsters& m) {  //äîáàâëÿåì êàðòû â êîëîäó
-        auto temp0 = p_a.GetAppleID();
-        auto temp1 = ac.GetAcidID();
-        auto temp2 = t.GetTreasureID();
-        auto temp6 = m.GetMonsterName();
+        auto appleGoals = p_a.GetAppleGoals();
+        auto acidLevels = ac.GetLvlDwn();
+        auto treasureLevels = t.GetLwlUp();
+        auto monsterStats = m.GetMonsterStatArrays();
 
-        auto temp3 = p_a.GetAppleGoals();
-        auto temp4 = ac.GetLvlDwn();
-        auto temp5 = t.GetLwlUp();
-        auto temp7 = m.GetMonsterStatArrays();
-        for (const auto& vec : temp7) {
-            charactD.insert(charactD.end(), vec.begin(), vec.end());
-        };
+        for (size_t i = 0; i < apples.size(); ++i)
+            deck.push_back({ apples[i], {appleGoals[i], 0, 0, 0} });
 
-        doors.insert(doors.end(), temp0.begin(), temp0.end());
-        doors.insert(doors.end(), temp1.begin(), temp1.end());
-        doors.insert(doors.end(), temp2.begin(), temp2.end());
-        doors.insert(doors.end(), temp6.begin(), temp6.end());
-        
-        charactD.insert(charactD.end(), temp3.begin(), temp3.end());
-        charactD.insert(charactD.end(), temp4.begin(), temp4.end());
-        charactD.insert(charactD.end(), temp5.begin(), temp5.end());
-        //for (const auto& vec : temp7) {
-        //charactD.insert(charactD.end(), temp7.begin(), temp7.end());
-        //}
+        for (size_t i = 0; i < acids.size(); ++i)
+            deck.push_back({ acids[i], {acidLevels[i], 0, 0, 0} });
 
-    }
-
-    void random_cartsD(const Monsters& m1) {
-        
-        int j = 0;
-        random_device rd;
-        mt19937 gen(rd());
-        uniform_int_distribution<> dist(0, static_cast<int>(doors.size()) - 1);
-        YourDoors0.resize(2);
-        YourDoorsData.clear();
-
-        auto monster_names = m1.GetMonsterName();
-        auto stats = m1.GetMonsterStatArrays();
-
-        while (j <= 1) {
-            int rndi0 = dist(gen);
-            YourDoors0[j] = doors[rndi0];
-
-            auto it = find(monster_names.begin(), monster_names.end(), doors[rndi0]);
-
-            if (it != monster_names.end()) {
-                size_t index = distance(monster_names.begin(), it);
-                if (index < stats[0].size()) {
-                    YourDoorsData.push_back({
-                        stats[0][index], // speed
-                        stats[1][index], // damage
-                        stats[2][index], // protection
-                        stats[3][index]  // money
-                        });
+        for (size_t i = 0; i < treasures.size(); ++i)
+            deck.push_back({ treasures[i], {treasureLevels[i], 0, 0, 0} });
+            
+        for (size_t i = 0; i < monsters.size(); ++i)
+            deck.push_back({
+                monsters[i],
+                {
+                    monsterStats[0][i],
+                    monsterStats[1][i],
+                    monsterStats[2][i],
+                    monsterStats[3][i]
                 }
-            }
-            else {
-                // åñëè íå ìîíñòð, ïðîñòî ïîëîæèì îäíî ÷èñëî (íàïðèìåð, êàê damage)
-                YourDoorsData.push_back({ charactD[rndi0], 0, 0, 0 });
-            }
+                });
 
-            j++;
+        shuffleDeck();
+    }
+
+    void shuffleDeck() {
+        vector<pair<string, vector<int>>> temp(deck.begin(), deck.end());
+        auto rng = default_random_engine(random_device{}());
+        shuffle(temp.begin(), temp.end(), rng);
+        deck = deque<pair<string, vector<int>>>(temp.begin(), temp.end());
+    }
+
+    pair<string, vector<int>> drawAndRecycleCard() {
+        if (deck.empty()) {
+            cerr << "Deck is empty!\n";
+            return { "", {} };
         }
+        auto card = deck.front();
+        deck.pop_front();
+        deck.push_back(card);
+        return card;
     }
 
-
-    const vector<string>& GetYourDoors0() const {
-        return YourDoors0;
+    vector<pair<string, vector<int>>> drawInitialPlayerCards(int count = 2) {
+        vector<pair<string, vector<int>>> cards;
+        for (int i = 0; i < count; ++i)
+            cards.push_back(drawAndRecycleCard());
+        return cards;
     }
 
-    const vector<vector<int>>& GetYourDoorsData() const {
-        return YourDoorsData;
+    size_t deckSize() const {
+        return deck.size();
     }
-
 };
+
+
+
