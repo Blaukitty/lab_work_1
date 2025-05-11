@@ -6,7 +6,7 @@
 using namespace std;
 
 void Logic::turns(your_carts& plr, ai& bot, Field& field,
-                 choose_cart_bottom& chooser, cause_troubles_bottom& troubles,
+                 choose_cart_bottom& chooser, couse_troubles_bottom& troubles,
                  Level& levelTracker, Doors_deck& deck2) {
     int turn = 0;
 
