@@ -15,12 +15,24 @@ private:
 
 public:
     void choose_cart(const your_carts& crt) {
+        cout << "Print (choose) to use card\n";
         cin >> input;
 
-        if (input == "i want to choose cart") {
+        // Проверка корректности ввода команды
+        while (input != "choose") {
+            cout << "Incorrect command. Try again: ";
+            cin >> input;
+        }
+
+
+        if (input == "choose") {
             cout << "Now, choose cart you want to use (2, 3)\n";
             cin >> input2;
-
+    
+            while (input2 < 2 && input2 > 3) {
+            cout << "Incorrect index. Try again! ";
+            cin >> input2;
+            }
             if (input2 == 2 || input2 == 3) {
                 CardData card;
                 card.name = crt.Carts[input2];
@@ -29,9 +41,7 @@ public:
 
                 cout << "You chose cart: " << card.name
                           << " with data: " << card.data << endl;
-            } else {
-                cout << "Incorrect cart index!\n";
-            }
+            } 
         }
     }
 
