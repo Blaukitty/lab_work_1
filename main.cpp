@@ -50,7 +50,7 @@ int main() {
 
     choose_cart_bottom chooser;
     ai_learning aiBrain;
-    couse_trubles_bottom playerToss;
+    cause_troubles_bottom troubles; 
     Logic gameLogic;
 
     // 6. Выбор расы и класса игроком
