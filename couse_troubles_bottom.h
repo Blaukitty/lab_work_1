@@ -9,7 +9,7 @@ using namespace std;
 
 class couse_trubles_bottom {
 private:
-    string couse;
+    int couse;
     int couse2;
     vector<CardData> playerCards;
 
@@ -22,25 +22,28 @@ public:
     }
 
     CardData choose_cart() {
-        cout << "Type 'ow, you want to couse some troubles... OK! I like it'\n";
+        cout << "(1) if u want to make problems or type (0)\n";
         cin.ignore();
         getline(cin, couse);
 
-        if (couse == "ow, you want to couse some troubles... OK! I like it") {
-            cout << "Choose a card index (0-3): ";
+        while (ccouse != 0 && choice != 1) {
+            cout << " Incorrect command! ";
+            cin >> couse;
+        }
+        if (couse == (1)) {
+            cout << "Choose a card index (2-3): ";
             cin >> couse2;
 
-            if (couse2 >= 0 && couse2 < 4) {
+            while (couse2 < 2 || couse2 > 3) {
+                cout << "Incorrect cart index! Try again /:";
+                cin >> cardIndex;
+            }
+            if (couse2 >= 2 && couse2 < 4) {
                 cout << "You threw: " << playerCards[couse2].name
                           << " (data: " << playerCards[couse2].data << ")\n";
                 return playerCards[couse2];
-            } else {
-                cout << "Incorrect index. No card thrown.\n";
-            }
-        } else {
-            cout << "Cancelled.\n";
-        }
-
+            } 
+        } 
         return { "", -1 }; // Return invalid card if cancelled or wrong input
     }
 };
