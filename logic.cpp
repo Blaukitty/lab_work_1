@@ -15,6 +15,15 @@ void Logic::turns(your_carts& plr, ai& bot, Field& field,
 
         if (turn == 0) {
             cout << "Player's turn to attack!\n";
+
+            player.showCarts();
+            chooser.choose_cart(player);
+            auto selected = chooser.get_selected_cards();
+            if (!selected.empty()) {
+                field.setEnemyCard(selected[0].name, {selected[0].data});
+                cout << "Игрок использует: " << selected[0].name << endl;
+            }
+          
             if (plr.damage >= field.getEnemyDataSum()) {
                 cout << "Player wins this round!\n";
                 plr.money += field.getEnemyDataSum();
@@ -22,8 +31,16 @@ void Logic::turns(your_carts& plr, ai& bot, Field& field,
             } else {
                 cout << "Player loses this round.\n";
             }
+          
         } else {
             cout << "AI's turn to attack!\n";
+            troubles.load_from_player(plr);
+            CardData usedCard = troubles.choose_cart();
+    
+            if (usedCard.data != -1) { 
+                field.setEnemyCard(usedCard.name, {usedCard.data});
+            }
+          
             if (bot.damage_ai >= field.getEnemyDataSum()) {
                 cout << "AI wins this round!\n";
                 bot.money_ai += field.getEnemyDataSum();
