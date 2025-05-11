@@ -89,7 +89,7 @@ int main() {
     myField.show_enemy();
 
     // 10. Основной игровой цикл
-    gameLogic.turns(playerCart, bot, myField, playerLevel, doorsDeck);
+    gameLogic.turns(playerCart, bot, myField, chooser, troubles, playerLevel, doorsDeck);
 
     return 0;
 }
