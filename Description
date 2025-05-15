@@ -1,25 +1,18 @@
-The Munchkin Game 
+Игра Манчкин.
+Это заъватывающая игра, напоминающая руссскую рулетку. Здесь не возмодно предугадать кто победит, а кто проиграет, все зависит от вашей удачи. 
 
-Description:
-This is a text adaptation of everyone's favorite game, in which you get the opportunity to play against AI. You have the opportunity to choose
-your character - his race (elf, human or dwarf) and his class (hunter, traveler or knight). Players fight
-against each other on the text field.
+В ходе игры вам, как и в обычном манчкине, выдаются карты - из дверей и из шмоток, но по 2 штуки. Эти карты остаются с вами до конца игры. Так же вы можете 
+выбрать себе рассу и род занятия, все го лишь следуйте инструкциям в окне терминала! Это придает игре душевности и вайб днд) 
 
-The interface, implemented using ASCII characters, will include two decks of "clothes" and "doors" cards. 
-The cards lying on the field, the opponent's cards and yours will also be displayed. You won't be able to see what kind of cards the AI has.
+У вас есть возможность сразиться с Искусственным интеллектом, он умеет делать все то же самое что и вы - может подкинуть вам карту врага, умеет сражаться
+с монстрами.
 
-The course of the game:
-Step1 - You receive two cards from each deck.
-Step2 - A card is selected from the "door" deck: either a monster that you have to fight, or a poisonous apple - a "surprise" card, or
-poison, alas, you are unlucky, or treasure. For defeating a monster, you get money with which you can level up or buy a card
-from the "clothes". The first move will always be yours. The AI can annoy you (as well as you can him) and throw a card that strengthens the monster. If the monster
-turns out to be too strong, you can escape. The possibility of each of your decisions is determined by the level of the monster and the value of one or another
-stats (speed, defense, or damage). If your level is less than the monster's level, and at the same time it is faster than you, then your level is reset to zero -
-you die. You get money for killing a monster.
-Step3 - After you have money, your level increases at their expense. Each new level costs more!
-Step4 is the AI's move.
-.
-.
-.
-stepN - the game continues until the decks run out of cards, then the one with the highest level wins, or until one of the players
-dies <3
+Особый шарм игре придает чувство неизвестности так как в случае, если одному из играков попадается карта НЕ монстра, то его уровень будет стремительно расти,
+и из-за этого он будет все ближе к победе. Если вам не повезло и монстр оказался вас сильнее, вам не стоит расстраиваться, поскольку в худшую сторону ваш
+уровень не изменится, он все-го лишь будет стоять на месте. За победу над монстром вам будут начисляться деньги, при этом если денег будет ровно в два раза больше,
+чем ваш текущий уровень, он увеличится на 1!
+
+Немного подробнее про бой. Карты монстров имеют 4 характериситеки, в то время как ваши карты всего по 1. Это так же часть русской рулетки и прибавляет игре азарта.
+Ваш итоговый урон считается из карты, которой вы решили биться, из ваших шмоток, вашей профессии и класса.
+
+Хорошей игры \(^ w ^)/
