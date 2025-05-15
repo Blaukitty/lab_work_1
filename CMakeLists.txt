@@ -3,19 +3,21 @@ project(game)
 
 set(CMAKE_CXX_STANDARD 17)
 
-option(ENABLE_ASAN   "Enable AddressSanitizer memory checks" OFF)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(ENABLE_ASAN)
-  message(STATUS "AddressSanitizer ENABLED")
-  # компилятор
-  add_compile_options(
-    -O1                   # ASan рекомендует O1
-    -g                    # отладочные символы
-    -fsanitize=address    # включаем ASan
-    -fno-omit-frame-pointer
-  )
-  # линкер
-  set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")
-endif()
+include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
-add_executable(game main.cpp)
+# Собираем все .cpp и .cc в корне проекта
+file(GLOB_RECURSE SOURCE_FILES
+    "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
+    "${CMAKE_CURRENT_SOURCE_DIR}/*.cc"
+)
+
+# Убираем main.cc, если вы используете только main.cpp
+list(FILTER SOURCE_FILES EXCLUDE REGEX "main\\.cc$")
+
+# Создаём исполняемый файл
+add_executable(game ${SOURCE_FILES})
+
+# (Опционально) ещё можно включить папку с заголовками, если они в поддиректориях
+# target_include_directories(game PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
