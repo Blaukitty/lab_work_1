@@ -1,23 +1,26 @@
-cmake_minimum_required(VERSION 3.15)
-project(game)
+cmake_minimum_required(VERSION 3.10)
 
+project(CardRPGGame VERSION 1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
-
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR})
+# Убедимся, что включаем заголовки из корня
+include_directories(${CMAKE_SOURCE_DIR})
 
-# Собираем все .cpp и .cc в корне проекта
-file(GLOB_RECURSE SOURCE_FILES
-    "${CMAKE_CURRENT_SOURCE_DIR}/*.cpp"
-    "${CMAKE_CURRENT_SOURCE_DIR}/*.cc"
+# Собираем рекурсивно все ваши .cpp/.cc из SRC_DIR (корня проекта),
+# но потом исключаем из списка всё, что лежит в папке build/ 
+# (и, на всякий случай, CMakeCXXCompilerId.cpp)
+file(GLOB_RECURSE ALL_SOURCES
+    "${CMAKE_SOURCE_DIR}/*.cpp"
+    "${CMAKE_SOURCE_DIR}/*.cc"
 )
 
-# Убираем main.cc, если вы используете только main.cpp
-list(FILTER SOURCE_FILES EXCLUDE REGEX "main\\.cc$")
+# Убираем из списка всё из build/ и сам CMakeCXXCompilerId.cpp
+list(FILTER ALL_SOURCES EXCLUDE REGEX ".*/build/.*")
+list(FILTER ALL_SOURCES EXCLUDE REGEX ".*/CMakeCXXCompilerId\\.cpp$")
 
-# Создаём исполняемый файл
-add_executable(game ${SOURCE_FILES})
+add_executable(game ${ALL_SOURCES})
 
-# (Опционально) ещё можно включить папку с заголовками, если они в поддиректориях
-# target_include_directories(game PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
+# (Опционально) если у вас есть внешние библиотеки — линковка тут:
+# target_link_libraries(game PRIVATE ...)
+
