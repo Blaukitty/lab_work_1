@@ -50,7 +50,7 @@ int main() {
 
     choose_cart_bottom chooser;
     ai_learning aiBrain;
-    cause_troubles_bottom troubles; 
+    couse_troubles_bottom troubles; 
     Logic gameLogic;
 
     // 6. Выбор расы и класса игроком
@@ -87,7 +87,7 @@ int main() {
     auto enemyCard = doorsDeck.drawAndRecycleCard();
     myField.setEnemyCard(enemyCard.first, enemyCard.second);
     myField.show_enemy();
-
+    
     // 10. Основной игровой цикл
     gameLogic.turns(playerCart, bot, myField, chooser, troubles, playerLevel, doorsDeck);
 

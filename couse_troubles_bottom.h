@@ -7,43 +7,44 @@
 
 using namespace std;
 
-class couse_trubles_bottom {
+class couse_troubles_bottom {
 private:
-    int couse;
-    int couse2;
+    int couse{0};
+    int couse2{0};
     vector<CardData> playerCards;
 
 public:
     void load_from_player(const your_carts& player) {
         playerCards.clear();
-        for (int i = 0; i < 4; ++i) {
-            playerCards.push_back(CardData{ player.Carts[i], player.Data[i] });
-        }
+        for (int i = 0; i < 4; ++i)
+            playerCards.push_back({ player.Carts[i], player.Data[i] });
     }
 
     CardData choose_cart() {
-        cout << "(1) if u want to make problems or type (0)\n";
-        cin.ignore();
-        getline(cin, couse);
+        cout << "(1) — make problems, (0) — miss the opportunity: ";
+        cin >> couse;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-        while (ccouse != 0 && choice != 1) {
-            cout << " Incorrect command! ";
+        while (couse != 0 && couse != 1) {
+            cout << "Incorrect command! Use 0 or 1: ";
             cin >> couse;
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
         }
-        if (couse == (1)) {
-            cout << "Choose a card index (2-3): ";
+
+        if (couse == 1) {
+            cout << "Choose cart index (2-3): ";
             cin >> couse2;
 
             while (couse2 < 2 || couse2 > 3) {
-                cout << "Incorrect cart index! Try again /:";
-                cin >> cardIndex;
+                cout << "Incorrect index! Try again (2-3): ";
+                cin >> couse2;
             }
-            if (couse2 >= 2 && couse2 < 4) {
-                cout << "You threw: " << playerCards[couse2].name
-                          << " (data: " << playerCards[couse2].data << ")\n";
-                return playerCards[couse2];
-            } 
-        } 
-        return { "", -1 }; // Return invalid card if cancelled or wrong input
+
+            const auto& card = playerCards[couse2];
+            cout << "AI use: " << card.name
+                 << " (data: " << card.data << ")\n";
+            return card;
+        }
+        return CardData{"", -1};
     }
 };

@@ -13,9 +13,14 @@ private:
 
 public:
     Level();
-    void level_counter(your_carts& cart1);
+    void level_counter(your_carts& cart1); // +1 level
     void level_counter(ai& cart2);
+    //+n level
+    void gainLevel(your_carts& cart1, int delta);
+    void gainLevel(ai& cart2, int delta);
+    
     void showLevel() const;
+    
     int getPlayerLevel() const;
     int getAILevel() const;
 };

@@ -25,6 +25,26 @@ void Level::level_counter(ai& cart2) {
     }
 }
 
+void Level::gainLevel(your_carts& cart1, int delta) {
+    if (lev >= 11) {
+        std::cout << "\n! Player is already at max level !\n";
+        return;
+    }
+    lev += delta;
+    std::cout << "[Level] Player level changed by " << delta
+              << ": now " << lev << "\n";
+}
+
+void Level::gainLevel(ai& cart2, int delta) {
+    if (lev_ai >= 11) {
+        std::cout << "\n! AI is already at max level !\n";
+        return;
+    }
+    lev_ai += delta;
+    std::cout << "[Level] AI level changed by " << delta
+              << ": now " << lev_ai << "\n";
+}
+
 void Level::showLevel() const {
     std::cout << "\n--- Players Level (>^w^<)  ---\n";
     std::cout << " Your Level: " << lev << std::endl;

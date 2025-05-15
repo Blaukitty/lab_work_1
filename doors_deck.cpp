@@ -8,40 +8,41 @@ Doors_deck::Doors_deck(const Poison_apple& apple, const Acid& acid,
                       const Treasure& treasure, const Monsters& monsters) {
     // Добавляем карты Poison_apple
     for (size_t i = 0; i < apple.GetAppleID().size(); ++i) {
-        deck.push_back(std::make_pair(apple.GetAppleID()[i], 
-                        std::vector<int>{apple.GetAppleGoals()[i]}));
+        deck.push_back(make_pair(apple.GetAppleID()[i], 
+                        vector<int>{apple.GetAppleGoals()[i]}));
     }
     
     // Добавляем карты Acid
     for (size_t i = 0; i < acid.GetAcidID().size(); ++i) {
-        deck.push_back(std::make_pair(acid.GetAcidID()[i], 
-                        std::vector<int>{acid.GetLvlDwn()[i]}));
+        deck.push_back(make_pair(acid.GetAcidID()[i], 
+                        vector<int>{acid.GetLvlDwn()[i]}));
     }
     
     // Добавляем карты Treasure
     for (size_t i = 0; i < treasure.GetTreasureID().size(); ++i) {
-        deck.push_back(std::make_pair(treasure.GetTreasureID()[i], 
-                        std::vector<int>{treasure.GetLwlUp()[i]}));
+        deck.push_back(make_pair(treasure.GetTreasureID()[i], 
+                        vector<int>{treasure.GetLwlUp()[i]}));
     }
     
     // Добавляем карты Monsters
     auto monster_names = monsters.GetMonsterName();
     auto monster_stats = monsters.GetMonsterStatArrays();
     for (size_t i = 0; i < monster_names.size(); ++i) {
-        std::vector<int> stats = {
+        vector<int> stats = {
             monster_stats[0][i], 
             monster_stats[1][i],
             monster_stats[2][i], 
             monster_stats[3][i]
         };
-        deck.push_back(std::make_pair(monster_names[i], stats));
+        deck.push_back(make_pair(monster_names[i], stats));
     }
     
     shuffleDeck();
 }
 
 pair<string, vector<int>> Doors_deck::drawAndRecycleCard() {
-    if (deck.empty()) return {"", {0, 0, 0, 0}};
+    if (deck.empty()) 
+      return {"", {0, 0, 0, 0}};
 
     auto card = deck.front();
     deck.pop_front();

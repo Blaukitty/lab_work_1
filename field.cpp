@@ -21,7 +21,7 @@ void Field::show_enemy() const {
     std::cout << "\n--- Your enemy (x . x) ---\n";
     std::cout << Cart_enemy << " ... ";
     for (int stat : Data_enemy) {
-        std::cout << stat << " ";
+        std::cout << stat << " \n";
     }
     std::cout << "\n";
 }
