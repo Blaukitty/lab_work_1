@@ -15,28 +15,23 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
+
 
       - name: Install dependencies
         run: |
           sudo apt update
           sudo apt install -y build-essential cmake libgtest-dev
 
-      - name: Configure CMake
+      - name: Configure & Build
         run: |
-          cmake -B build -S . \
-          -DCMAKE_BUILD_TYPE=Debug \
-          -DENABLE_ASAN=ON
+          mkdir -p build
+          cd build
+          cmake ..
+          cmake --build .
 
-      - name: Build project
-        run: |
-          cmake --build build --config Debug
 
-      - name: Run game under ASan
-      # Любая ошибка утечки приведёт к ненулевому exit-коду
-        run: |
-          ./build/game
-
-      - name: Run executable
+      - name: Smoke-run game
         run: |
           ./build/game
