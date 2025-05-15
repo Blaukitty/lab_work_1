@@ -18,4 +18,4 @@ if(ENABLE_ASAN)
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -fsanitize=address")
 endif()
 
-add_executable(game game2.cpp)
+add_executable(game main.cpp)
