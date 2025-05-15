@@ -1,43 +1,181 @@
 Functional requirements:
-- Game interface:
-        - The game should be a text-based interface that displays the current character attributes and available actions.
-        
-    - Launching the game:
-        - When starting the game, its name and icons should appear with the choice of the character's class and race.
-        
-    - The battle system:
-        - The player has the opportunity to escape, fight a monster or throw a card to the opponent. If the player gets a treasure card,
-        he just takes it, but the player cannot have more than six cards in his hands, so he will have to choose which card to discard from those
-in his hands. If he gets a poison apple or poison card, then he just gets the effect of the card without taking it. 
-        bail. All the money that the player has collected during the turn is automatically converted into a level. Leveling up increases all stats
-        One at a time.
-        - After the player's battle is over, the AI does its own battle.
-        - After completing the bet, both players receive one card from each deck.
-        
-    - End of the game:
-        - The game ends when the player dies.
-        - The game ends when the AI dies.
-        - The game ends when the levels are compared at the end of the game (including all treasure maps), the one whose level is higher wins.
+Вот краткое описание:
 
-        
-  Game example:
+Жанр: Текстовая карточная RPG с элементами русской рулетки.
 
-1 - The player chooses an elf race (automatically +2 for speed) and a knight class (+2 for defense), and the AI has to be a dwarf (+2 for defense) hunter 
-        (+2 damage). The initial settings are such that each characteristic is 1.
-    2 - The player gets cards from the "clothes" - lady gloves (+1 level) and T-shirt protection (+1 protection), he got a monster troll from the "doors".
-        (3 levels, 2 coins (for defeating him), 4 defense, 1 speed, 2 damage) and belodonna poison (-1 level). These cards are just lying on his chest.
-        hands. AI maps are not known.
-    3 - A card from the door deck is displayed on the field - this is a robber (1 level, 0.5 coins, 2 speed, 1 damage, 1 defense). The player can escape,
-        since his speed is lower, but in this case he will not receive coins, that is, he will not raise the level. The player gets the right to fight because 
-        his level is higher than the robber's, He can defeat him, since the player's damage is 2, defense is 3, which removes the robber's damage by
-1.5 (half the defense), so 2 against -0.5. The player won. He received 0.5 coins. to get the second level, you need 1.
-    4 - The AI's move. The same thing is happening. But with different cards. Before the start of the battle, the player decides to throw the troll card to the AI, in this case, the levels are not
-        summed up - only the level of the card that fell out of the deck matters. Only the characteristics are summarized. The AI is winning. He gets
-        coins for both monsters you defeated.
-    5 - Both players receive one more card from each deck. The player has spent a troll, so he gets an additional one.a map from the doors. The characteristics are updated.
+Начало: Игрок выбирает расу (человек, эльф, дворф) и класс (охотник, путешественник, рыцарь), получая бонусы к характеристикам — урон, защита или скорость.
+
+Механика:
+
+Игрок и AI имеют характеристики: урон, защита, скорость, деньги, уровень.
+
+Существует две колоды карт — "одежда" (например, chain mail, swift boots) и "двери" (монстры или события — Kisame, Toby).
+
+Игрок получает карты, которые влияют на характеристики и сражается с противниками.
+
+Интерфейс: Текстовый вывод с блоками статусов и действий
 
 
+Пример игры:
+Choose character!
+ You can be a human, a dwarf or an elf.
+By the way, there are some special goals of every race.
+ You will have +2 damage as a human, +2 speed as an elf or +2 protection as a dwarf
+elf
+Now it's time to choose your class!
+ You can be a hunter, a traveler or a knight.
+There are also some special goals of every class.
+ You will have +2 damage as a hunter, +2 speed as a traveler or +2 protection as a knight
+hunter
 
+--- Player Carts (^^) ---
+Cloth Cards:
+chain mail ... 2
+swift boots ... 2
+Door Cards:
+Kisame ... 5
+Toby ... 9
+
+--- Player Status (>.<)  ---
+ Race: elf
+ Class: hunter
+ Damage: 5
+ Protection: 3
+ Speed: 3
+ Money: 0
+
+--- Players Level (>^w^<)  ---
+ Your Level: 1
+ $ 
+ AI Level: 1
+ * 
+
+--- AI Identity (=_=)  ---
+ Race: elf
+ Class: traveler
+
+--- Your enemy (x . x) ---
+Magic dragon ... 4 
+5 
+3 
+-2 
+
+
+===== Turn: Player =====
+
+--- Your enemy (x . x) ---
+Kakuzu ... 1 
+3 
+3 
+1 
+
+Player's turn to attack!
+
+--- Player Carts (^^) ---
+Cloth Cards:
+chain mail ... 2
+swift boots ... 2
+Door Cards:
+Kisame ... 5
+Toby ... 9
+Print (choose) to use card
+choose
+Now, choose cart you want to use (2, 3)
+2
+You chose cart: Kisame with data: 5
+Player uses sabotage card: Kisame
+Player wins this fight!
+
+===== Turn: AI =====
+
+--- Your enemy (x . x) ---
+Fool monster ... 0 
+1 
+1 
+0 
+
+AI's turn to attack!
+(1) — make problems, (0) — miss the opportunity: 1
+Choose cart index (2-3): 3
+AI use: Toby (data: 9)
+AI sabotages with: Toby
+AI loses this fight.
+
+===== Turn: Player =====
+
+--- Your enemy (x . x) ---
+Mike Vazovsky ... 2 
+3 
+1 
+0 
+
+Player's turn to attack!
+
+--- Player Carts (^^) ---
+Cloth Cards:
+chain mail ... 2
+swift boots ... 2
+Door Cards:
+Kisame ... 5
+Toby ... 9
+Print (choose) to use card
+2
+Incorrect command. Try again: choose
+Now, choose cart you want to use (2, 3)
+2
+You chose cart: Kisame with data: 5
+Player uses sabotage card: Kisame
+Player wins this fight!
+
+===== Turn: AI =====
+
+--- Your enemy (x . x) ---
+Garden dwarf ... 1 
+3 
+2 
+1 
+
+AI's turn to attack!
+(1) — make problems, (0) — miss the opportunity: 0
+AI loses this fight.
+
+===== Turn: Player =====
+Event card: king's crown (effect: 3)
+[Level] Player level changed by 3: now 6
+
+===== Turn: AI =====
+
+--- Your enemy (x . x) ---
+Pain ... 5 
+4 
+2 
+0 
+
+AI's turn to attack!
+(1) — make problems, (0) — miss the opportunity: 0
+AI loses this fight.
+
+===== Turn: Player =====
+Event card: apple of death (effect: 3)
+[Level] Player level changed by 3: now 9
+
+===== Turn: AI =====
+Event card: snow white apple (effect: 4)
+[Level] AI level changed by 4: now 5
+
+===== Turn: Player =====
+Event card: metal acid (effect: 1)
+[Level] Player level changed by 1: now 10
+
+===== Turn: AI =====
+Event card: magic ring (effect: 1)
+[Level] AI level changed by 1: now 6
+
+===== Turn: Player =====
+Event card: poison apple (effect: 2)
+[Level] Player level changed by 2: now 12
+
+Player wins the game!
 
 
 
