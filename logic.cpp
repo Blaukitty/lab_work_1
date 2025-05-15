@@ -3,15 +3,39 @@
 // logic_module.cpp
 #include "logic.h"
 
-using namespace std;
+using std::cout;
+using std::endl;
 
-void Logic::turns(your_carts& plr, ai& bot, Field& field,
-                 choose_cart_bottom& chooser, couse_troubles_bottom& troubles,
-                 Level& levelTracker, Doors_deck& deck2) {
-    int turn = 0;
-
-    while (flag) {
+void Logic::turns(your_carts& player,
+                  ai&          bot,
+                  Field&       field,
+                  choose_cart_bottom&  chooser,
+                  couse_troubles_bottom& troubles,
+                  Level&       levelTracker,
+                  Doors_deck&  doorsDeck)
+{
+    int turn = 0; // 0 — игрок, 1 — AI
+    while (flag)
+    {
         cout << "\n===== Turn: " << (turn == 0 ? "Player" : "AI") << " =====\n";
+        
+        auto card = doorsDeck.drawAndRecycleCard();
+        if (card.second.size() < 4) {
+        // не-монстр: мгновенный эффект
+            int effect = card.second[0];
+            if (turn == 0) {
+                levelTracker.gainLevel(player, effect);
+            }
+            else  {
+                levelTracker.gainLevel(bot, effect);
+            }
+            // переходим к смене хода
+            turn = 1 - turn;
+            continue;
+        }
+        
+        field.setEnemyCard(card.first, card.second);
+        field.show_enemy();
 
         if (turn == 0) {
             cout << "Player's turn to attack!\n";
@@ -19,28 +43,31 @@ void Logic::turns(your_carts& plr, ai& bot, Field& field,
             player.showCarts();
             chooser.choose_cart(player);
             auto selected = chooser.get_selected_cards();
+
             if (!selected.empty()) {
                 field.setEnemyCard(selected[0].name, {selected[0].data});
                 cout << "Игрок использует: " << selected[0].name << endl;
             }
-          
-            if (plr.damage >= field.getEnemyDataSum()) {
+
+            if (player.damage >= field.getEnemyDataSum()) {
                 cout << "Player wins this round!\n";
-                plr.money += field.getEnemyDataSum();
-                levelTracker.level_counter(plr);
+                player.money += field.getEnemyDataSum();
+                levelTracker.level_counter(player);
             } else {
                 cout << "Player loses this round.\n";
             }
-          
-        } else {
+        }
+        else {
             cout << "AI's turn to attack!\n";
-            troubles.load_from_player(plr);
+
+            troubles.load_from_player(player);
             CardData usedCard = troubles.choose_cart();
-    
-            if (usedCard.data != -1) { 
+
+            if (usedCard.data != -1) {
                 field.setEnemyCard(usedCard.name, {usedCard.data});
+                cout << "AI uses: " << usedCard.name << endl;
             }
-          
+
             if (bot.damage_ai >= field.getEnemyDataSum()) {
                 cout << "AI wins this round!\n";
                 bot.money_ai += field.getEnemyDataSum();
@@ -51,18 +78,19 @@ void Logic::turns(your_carts& plr, ai& bot, Field& field,
         }
 
         if (levelTracker.getPlayerLevel() >= 11) {
-            cout << "\n Player wins the game!\n";
+            cout << "\nPlayer wins the game!\n";
             break;
         }
         if (levelTracker.getAILevel() >= 11) {
-            cout << "\n AI wins the game!\n";
+            cout << "\nAI wins the game!\n";
             break;
         }
 
-        turn = 1 - turn; // Switch turns
+        turn = 1 - turn;
     }
 }
 
 void Logic::end() {
     flag = false;
 }
+
