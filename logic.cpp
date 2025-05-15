@@ -18,6 +18,24 @@ void Logic::turns(your_carts& player,
     while (flag)
     {
         cout << "\n===== Turn: " << (turn == 0 ? "Player" : "AI") << " =====\n";
+        
+        auto card = doorsDeck.drawAndRecycleCard();
+        if (card.second.size() < 4) {
+        // не-монстр: мгновенный эффект
+            int effect = card.second[0];
+            if (turn == 0) {
+                levelTracker.gainLevel(player, effect);
+            }
+            else  {
+                levelTracker.gainLevel(bot, effect);
+            }
+            // переходим к смене хода
+            turn = 1 - turn;
+            continue;
+        }
+        
+        field.setEnemyCard(card.first, card.second);
+        field.show_enemy();
 
         if (turn == 0) {
             cout << "Player's turn to attack!\n";
