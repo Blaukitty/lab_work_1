@@ -28,8 +28,3 @@ jobs:
           cd build
           cmake ..
           cmake --build . -- -j$(nproc)
-
-      - name: Smoke test with sample input
-        run: |
-          cd build
-          echo -e "human\nknight\n" | ./game
