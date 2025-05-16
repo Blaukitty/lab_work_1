@@ -32,6 +32,6 @@ jobs:
           cmake --build .
 
 
-      - name: Smoke-run game
+      - name: Smoke test with input
         run: |
-          ./build/game
+          echo -e "human\nknight\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3\choose\2\1\3"   | ./build/game
