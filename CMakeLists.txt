@@ -6,9 +6,6 @@ project(CardRPGGame VERSION 1.0 LANGUAGES CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Подключаем ccache (CI передаёт переменные окружения)
-set(CMAKE_CXX_COMPILER_LAUNCHER ccache)
-
 # (Опционально) чтобы генерировался compile_commands.json
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
