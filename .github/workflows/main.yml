@@ -1,13 +1,11 @@
 # .github/workflows/ci.yml
-name: C++ CI Workflow
+name: C++ Build
 
 on:
   push:
-    branches:
-      - main
+    branches: [ main ]
   pull_request:
-    branches:
-      - main
+    branches: [ main ]
   workflow_dispatch:
 
 jobs:
@@ -18,33 +16,17 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Cache ccache
-        uses: actions/cache@v3
-        with:
-          path: ~/.ccache
-          key: ${{ runner.os }}-ccache-${{ hashFiles('**/*.cpp', '**/*.h', 'CMakeLists.txt') }}
-
       - name: Install dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y build-essential cmake ninja-build ccache libgtest-dev
-          echo "export CCACHE_DIR=\$HOME/.ccache" >> $GITHUB_ENV
-          echo "export CC='ccache gcc'"      >> $GITHUB_ENV
-          echo "export CXX='ccache g++'"     >> $GITHUB_ENV
+          sudo apt-get install -y build-essential cmake
 
-      - name: Configure with Ninja & ccache
+      - name: Configure & Build
         run: |
           mkdir -p build
           cd build
-          cmake .. \
-            -G Ninja \
-            -DCMAKE_BUILD_TYPE=Release \
-            -DCMAKE_CXX_COMPILER_LAUNCHER=ccache
-
-      - name: Build (parallel)
-        run: |
-          cd build
-          ninja
+          cmake ..
+          cmake --build . -- -j$(nproc)
 
       - name: Smoke test with sample input
         run: |
