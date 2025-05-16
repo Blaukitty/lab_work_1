@@ -50,5 +50,3 @@ jobs:
         run: |
           cd build
           echo -e "human\nknight\n" | ./game
-ы запуска без долгих эмуляций
-          echo -e "human\nknight\n" | ./build/game
