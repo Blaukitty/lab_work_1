@@ -18,15 +18,8 @@ jobs:
       - name: Checkout CI
         uses: actions/checkout@v4
         with:
-          ref: code_ci
-          path: ci-root
-          
-      - name: Checkout project code
-        uses: actions/checkout@v4
-        with:
           ref: code_of_game
-          path: source
-          
+
       - name: Install dependencies
         run: |
           sudo apt update
