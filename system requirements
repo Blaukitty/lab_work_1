@@ -1,22 +1,20 @@
-Functional requirements:
-Вот краткое описание:
+Here's a short description:
 
-Жанр: Текстовая карточная RPG с элементами русской рулетки.
+Genre: Text card RPG with elements of Russian roulette.
 
-Начало: Игрок выбирает расу (человек, эльф, дворф) и класс (охотник, путешественник, рыцарь), получая бонусы к характеристикам — урон, защита или скорость.
+Start: The player chooses a race (human, elf, dwarf) and class (hunter, traveler, knight), receiving bonuses to characteristics - damage, defense or speed.
 
-Механика:
+Mechanics:
 
-Игрок и AI имеют характеристики: урон, защита, скорость, деньги, уровень.
+The player and AI have characteristics: damage, defense, speed, money, level.
 
-Существует две колоды карт — "одежда" (например, chain mail, swift boots) и "двери" (монстры или события — Kisame, Toby).
+There are two decks of cards - "clothes" (for example, chain mail, swift boots) and "doors" (monsters or events - Kisame, Toby).
 
-Игрок получает карты, которые влияют на характеристики и сражается с противниками.
+The player receives cards that affect characteristics and fights with opponents.
 
-Интерфейс: Текстовый вывод с блоками статусов и действий
+Interface: Text output with status and action blocks
 
-
-Пример игры:
+Example of the game:
 Choose character!
  You can be a human, a dwarf or an elf.
 By the way, there are some special goals of every race.
