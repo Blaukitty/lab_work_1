@@ -16,7 +16,20 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: code_ci
+          path: ci-root
+          
+      - name: Checkout project code
+        uses: actions/checkout@v4
+        with:
+          ref: code_of_game
+          path: source
 
+      - name: Enter CI root 
+        run: |
+          cd ci-root
+          
       - name: Install dependencies
         run: |
           sudo apt update
