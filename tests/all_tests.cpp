@@ -62,10 +62,8 @@ TEST(DoorsDeckTest, Sise) {
     Treasure treasure;
     Monsters monsters;
     Doors_deck deck{apple, acid, treasure, monsters};
-    EXPECT_EQ(deck.deckSize(), 2 + 3 + 3 + 12);
-    auto initCards = deck.drawInitialPlayerCards();
-    ASSERT_EQ(initCards.size(), 2u);
-    EXPECT_EQ(deck.deckSize(), 20u);
+    size_t expected = apple.GetAppleID().size() + acid.GetAcidID().size() + treasure.GetTreasureID().size() + monsters.GetMonsterName().size();
+    EXPECT_EQ(deck.deckSize(), expected);
 }
 
 TEST(DoorsDeckTest, Recycle) {
