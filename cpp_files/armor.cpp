@@ -1,6 +1,4 @@
-// armor.cpp content
-
-// armor_module.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "armor.h"
 
 Armor::Armor() {
