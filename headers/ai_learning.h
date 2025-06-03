@@ -1,6 +1,7 @@
-// ai_learning.h
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 
-#pragma once
+#ifndef AI_LEARNING_H
+#define AI_LEARNING_H
 #include <vector>
 #include <string>
 #include <algorithm>
@@ -22,3 +23,4 @@ public:
     aiCardData selectWorstCard();
     void respondToVictory(bool isMonsterCard, bool player2Won);
 };
+#endif
