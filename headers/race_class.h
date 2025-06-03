@@ -1,7 +1,6 @@
-// race_class.h content
-
-// race_class.h
-#pragma once
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef RACE_CLASS_H
+#define RACE_CLASS_H
 #include <string>
 #include <random>
 #include <iostream>
@@ -24,3 +23,4 @@ public:
     void choosing_class(your_carts& cart0);
     void choosing_class_ai(ai& cartB);
 };
+#endif
