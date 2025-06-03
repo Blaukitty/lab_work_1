@@ -38,6 +38,6 @@ jobs:
         run: |
           make test
 
-      - name: Run executable
-        run: |
-          ./build/game
+     # - name: Run executable  убираем этот кусок, потому что игра требует неоднократного 
+     #   run: |                ввода с клавиатуры и этот кусок висит.
+     #     ./build/game
