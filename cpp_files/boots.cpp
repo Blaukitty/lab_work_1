@@ -1,9 +1,5 @@
-// boots.cpp content
-
-// boots_module.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "boots.h"
-
-using namespace std;
 
 Boots::Boots() {
     setup_boots();
@@ -14,10 +10,10 @@ void Boots::setup_boots() {
     boots_speed = { 1, 2, 3 };
 }
 
-const vector<string>& Boots::GetBootsID() const {
+const std::vector<std::string>& Boots::GetBootsID() const {
     return boots_id;
 }
 
-const vector<int>& Boots::GetBootsSpeed() const {
+const std::vector<int>& Boots::GetBootsSpeed() const {
     return boots_speed;
 }
