@@ -1,5 +1,6 @@
-// ai.h content
-#pragma once
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef AI_H
+#define AI_H
 
 #include <string>
 #include <array>
@@ -29,3 +30,4 @@ public:
     void carts_getting_ai(const Cloth_deck& clo);
     void data_getting_ai(const Cloth_deck& clo);
 };
+#endif
