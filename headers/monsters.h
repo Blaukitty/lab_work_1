@@ -1,7 +1,6 @@
-// monsters.h content
-
-// monsters_module.h
-#pragma once
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef MONSTERS_H
+#define MONSTERS_H
 #include <string>
 #include <vector>
 
@@ -22,3 +21,4 @@ public:
     std::vector<int> GetStatByMonsterName(const std::string& name) const;
     bool IsMonster(const std::string& name) const;
 };
+#endif
