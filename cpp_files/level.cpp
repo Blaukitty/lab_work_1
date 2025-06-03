@@ -1,6 +1,4 @@
-// level.cpp content
-
-// level_module.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "level.h"
 
 Level::Level() : lev(1), lev_ai(1) {}
