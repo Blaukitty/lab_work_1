@@ -1,8 +1,7 @@
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "doors_deck.h"
 #include <algorithm>
 #include <random>
-
-using namespace std;
 
 Doors_deck::Doors_deck(const Poison_apple& apple, const Acid& acid, 
                       const Treasure& treasure, const Monsters& monsters) {
@@ -40,7 +39,7 @@ Doors_deck::Doors_deck(const Poison_apple& apple, const Acid& acid,
     shuffleDeck();
 }
 
-pair<string, vector<int>> Doors_deck::drawAndRecycleCard() {
+pair<std::string, std::vector<int>> Doors_deck::drawAndRecycleCard() {
     if (deck.empty()) return {"", {0, 0, 0, 0}};
 
     auto card = deck.front();
@@ -49,8 +48,8 @@ pair<string, vector<int>> Doors_deck::drawAndRecycleCard() {
     return card;
 }
 
-vector<pair<string, vector<int>>> Doors_deck::drawInitialPlayerCards() {
-    vector<pair<string, vector<int>>> initialCards;
+std::vector<std::pair<std::string, std::vector<int>>> Doors_deck::drawInitialPlayerCards() {
+    std::vector<std::pair<std::string, std::vector<int>>> initialCards;
     for (int i = 0; i < 2; ++i) {
         initialCards.push_back(drawAndRecycleCard());
     }
@@ -58,11 +57,11 @@ vector<pair<string, vector<int>>> Doors_deck::drawInitialPlayerCards() {
 }
 
 void Doors_deck::shuffleDeck() {
-    vector<pair<string, vector<int>>> temp(deck.begin(), deck.end());
-    random_device rd;
-    mt19937 g(rd());
-    shuffle(temp.begin(), temp.end(), g);
-    deck = deque<pair<string, vector<int>>>(temp.begin(), temp.end());
+    std::vector<std::pair<std::string, std::vector<int>>> temp(deck.begin(), deck.end());
+    std::random_device rd;
+    std::mt19937 g(rd());
+    std::shuffle(temp.begin(), temp.end(), g);
+    deck = std::deque<std::pair<std::string, std::vector<int>>>(temp.begin(), temp.end());
 }
 
 size_t Doors_deck::deckSize() const {
