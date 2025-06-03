@@ -1,7 +1,6 @@
-// poison_apple.h content
-
-// poison_apple_module.h
-#pragma once
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef POISON_APPLE_H
+#define POISON_APPLE_H
 #include <string>
 #include <vector>
 
@@ -17,3 +16,4 @@ public:
     const std::vector<std::string>& GetAppleID() const;
     const std::vector<int>& GetAppleGoals() const;
 };
+#endif
