@@ -1,7 +1,6 @@
-// armor.h content
-
-// armor_module.h
-#pragma once
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef ARMOR_H
+#define ARMOR_H
 #include <string>
 #include <vector>
 
@@ -17,4 +16,4 @@ public:
     const std::vector<std::string>& GetArmorID() const;
     const std::vector<int>& GetArmorProtection() const;
 };
-
+#endif
