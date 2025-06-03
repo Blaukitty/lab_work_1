@@ -1,7 +1,6 @@
-// treasure.h content
-
-// treasure_module.h
-#pragma once
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef TREASURE_H
+#define TREASURE_H
 #include <string>
 #include <vector>
 
@@ -17,3 +16,4 @@ public:
     const std::vector<std::string>& GetTreasureID() const;
     const std::vector<int>& GetLwlUp() const;
 };
+#endif
