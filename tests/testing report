@@ -1,0 +1,123 @@
+1. Monsters Module
+File: monsters.h / monsters.cpp.
+Purpose: stores a list of all monsters and four parallel vectors:
+monsterNames – a list of names.
+speedM, damageM, protectionM, moneyM – their characteristics, respectively.
+Methods checked in tests:
+IsMonster(const std::string&) – checks if a name exists.
+GetStatByMonsterName(const std::string&) – returns a vector<int> of four elements
+[speed, damage, protection, money] or {-1,-1,-1,-1} if the name is not found.
+GetMonsterName() – returns a vector<string> with all names.
+
+MonstersTest.Stat Test
+Purpose: ensure that when an existing monster (e.g. "Itachi") is requested, the correct
+four numbers are returned.
+Scenario:
+A Monsters mons; object is created.
+Check mons.IsMonster("Itachi") == true.
+Call mons.GetStatByMonsterName("Itachi") → stats.
+Expected stats.size() == 4 and, for example, stats[0] == 6, stats[1] == 6, stats[2] == 5, stats[3] == -1
+(according to the source data).
+Result: the test passes successfully, the returned values ​​match the actual arrays in the code.
+
+Test MonstersTest.NotFound
+Goal: to verify that when requesting a non-existent name, {-1, -1, -1, -1} is returned.
+Scenario:
+Monsters mons;
+auto stats = mons.GetStatByMonsterName("NonExistentMonster");
+Check that stats == vector<int>{-1,-1,-1,-1}.
+Result: the test passes (the code does return four -1s).
+
+2. Acid module
+File: acid.h / acid.cpp.
+Purpose: stores two vectors:
+acid_id – names of acid traps ("metal acid", "rat acid", "your mother's food").
+lvl_dwn – corresponding damage levels [1, 2, 3].
+Methods checked in tests:
+GetAcidID() → const vector<string>&
+GetLvlDwn() ​​→ const vector<int>&
+
+AcidTest.ID_Levels test
+Purpose: to make sure that vectors are filled correctly in the Acid() constructor.
+Scenario:
+Acid acid;
+auto ids = acid.GetAcidID();
+auto downs = acid.GetLvlDwn();
+Check that ids == {"metal acid", "rat acid", "your mother's food"} and downs == {1, 2, 3}.
+Result: test passes; vectors match code.
+
+3. Treasure Module
+File: treasure.h / treasure.cpp.
+Purpose: stores two vectors:
+treasure_id – list of treasure names (examples: "gold1", "gold2", "gold3", etc.).
+level_up – level bonuses or statistics for each treasure.
+Methods checked in tests:
+GetTreasureID() → const vector<string>&
+GetLwlUp() → const vector<int>&
+
+TreasureTest.ID_Levels test
+Goal: check that Treasure fills its vectors when created (at least a non-empty vector and matching sizes).
+Scenario:
+Treasure tr;
+auto ids = tr.GetTreasureID();
+auto ups = tr.GetLwlUp();
+Check that ids.size() > 0, ups.size() > 0 and ids.size() == ups.size().
+Result: test passes (there are at least three elements in the code, and the sizes match).
+
+4. Doors_deck module
+File: doors_deck.h / doors_deck.cpp.
+Purpose: combines four card sources — Poison_apple, Acid, Treasure, Monsters — into a single deck
+deque<pair<string, vector<int>>> deck, implements shuffling, re-dealing and initial dealing.
+Methods checked in tests:
+Doors_deck(poisonApple, acid, treasure, monsters) constructor — should collect all four card types
+into the internal deck and then call shuffleDeck().
+size_t deckSize() const — deck size.
+vector<pair<string, vector<int>>> drawInitialPlayerCards() — should return exactly 2 cards, while the size
+of the deck should not change after the call (since the cards are returned to the end).
+pair<string, vector<int>> drawAndRecycleCard() — produces one card (the first one), moves it to the end, and the deck remains the same size. The returned pair must not be empty (name must be a non-empty string).
+
+DoorsDeckTest.Size Test
+Goal: Verify that the final deck size is the sum of the lengths of each source:
+ini
+Copy
+Edit
+size = appleCount + acidCount + treasureCount + monsterCount.
+Scenario:
+Called Doors_deck deck{apple, acid, treasure, monsters}.
+EXPECT_EQ(deck.deckSize(), 20).
+cpp
+Copy
+Edit
+size_t expected =
+apple.GetAppleID().size()
++ acid.GetAcidID().size()
++ treasure.GetTreasureID().size()
++ monsters.GetMonsterName().size();
+EXPECT_EQ(deck.deckSize(), expected);
+
+DoorsDeckTest Test. Recycle
+Goal: Verify that the drawAndRecycleCard() method does not change the deck size and returns a non-empty
+{name, vector<int>} pair.
+Scenario:
+Doors_deck deck{apple, acid, treasure, monsters}.
+size_t orig = deck.deckSize();
+auto c1 = deck.drawAndRecycleCard(); EXPECT_EQ(deck.deckSize(), orig); EXPECT_FALSE(c1.first.empty());
+auto c2 = deck.drawAndRecycleCard(); EXPECT_EQ(deck.deckSize(), orig); EXPECT_FALSE(c2.first.empty());
+Result: The test passes (after dynamically calculating the size).
+
+5. Cloth_deck Module
+File: cloth_deck.h / cloth_deck.cpp.
+Purpose: combines four equipment sources – Armor, Gloves, Boots, Protection – and for each
+event gives two random items in the fields:
+cpp
+Copy
+Edit
+std::array<std::string,2> yourCloth0;
+std::array<int,2> yourClothData;
+Methods checked in tests:
+Constructor Cloth_deck(armor, gloves, boots, protection) – fills four vectors
+(armo
+std::string expected = mons.GetMonsterName()[0]; EXPECT_EQ(field.getEnemyName(), expected);
+auto stats = mons.GetStatByMonsterName(expected); EXPECT_EQ(field.getEnemyDataSum(), stats[0] + stats[1] + 
+stats[2] + stats[3]);
+EXPECT_TRUE(field.isCurrentEnemyMonster());
