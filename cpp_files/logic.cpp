@@ -1,6 +1,4 @@
-// logic.cpp content
-
-// logic_module.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "logic.h"
 
 using std::cout;
