@@ -1,3 +1,4 @@
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include <iostream>
 #include <numeric>
 #include "your_carts.h"
@@ -14,8 +15,6 @@
 #include "gloves.h"
 #include "boots.h"
 #include "protection.h"
-
-using namespace std;
 
 int main() {
     // 1. Инициализация объектов для колоды дверей
@@ -61,8 +60,8 @@ int main() {
     auto playerDoors = doorsDeck.drawInitialPlayerCards();
     playerCart.Carts[2] = playerDoors[0].first;
     playerCart.Carts[3] = playerDoors[1].first;
-    playerCart.Data[2] = accumulate(playerDoors[0].second.begin(), playerDoors[0].second.end(), 0);
-    playerCart.Data[3] = accumulate(playerDoors[1].second.begin(), playerDoors[1].second.end(), 0);
+    playerCart.Data[2] = std::accumulate(playerDoors[0].second.begin(), playerDoors[0].second.end(), 0);
+    playerCart.Data[3] = std::accumulate(playerDoors[1].second.begin(), playerDoors[1].second.end(), 0);
 
     playerCart.carts_getting(clothDeck);
     playerCart.data_getting(clothDeck);
