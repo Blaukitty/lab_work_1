@@ -1,3 +1,4 @@
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "cloth_deck.h"
 #include "armor.h"
 #include "gloves.h"
