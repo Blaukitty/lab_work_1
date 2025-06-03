@@ -1,11 +1,9 @@
-// your_carts.h content
-
-// your_carts.h
-#pragma once
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef YOUR_CARTS_H
+#define YOUR_CARTS_H
 #include <string>
 #include <array>
-#include "cloth_deck.h"  // Для Cloth_deck
-
+#include "cloth_deck.h"  
 
 class race;
 class cl_ass;
@@ -29,3 +27,4 @@ public:
     void data_getting(const Cloth_deck& cl);
     void showCarts();
 };
+#endif
