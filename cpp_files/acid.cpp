@@ -1,15 +1,17 @@
-// acid.cpp content
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 
 #include "acid.h"
 
-using namespace std;
+#include "acid.h"
+#include <string>
+#include <vector>
 
 Acid::Acid() {
     level_down();
 }
 
 void Acid::level_down() {
-    for (int n = 1; n != 4; n++) {
+    for (int n = 1; n != 4; ++n) {
         lvl_dwn.push_back(n);
         if (n == 1) {
             acid_id.push_back("metal acid");
@@ -21,10 +23,11 @@ void Acid::level_down() {
     }
 }
 
-const vector<string>& Acid::GetAcidID() const {
+const std::vector<std::string>& Acid::GetAcidID() const {
     return acid_id;
 }
 
-const vector<int>& Acid::GetLvlDwn() const {
+const std::vector<int>& Acid::GetLvlDwn() const {
     return lvl_dwn;
 }
+
