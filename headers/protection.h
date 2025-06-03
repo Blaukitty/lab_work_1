@@ -1,7 +1,7 @@
-// protection.h content
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 
-// protection.h
-#pragma once
+#ifndef PROTECTION_H
+#define PROTECTION_H
 #include <string>
 #include <vector>
 
@@ -17,3 +17,4 @@ public:
     const std::vector<std::string>& GetProtectionID() const;
     const std::vector<int>& GetProtectionValue() const;
 };
+#endif
