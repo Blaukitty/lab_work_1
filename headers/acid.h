@@ -1,7 +1,7 @@
-// acid.h content
+/*Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru*/
+#ifndef ACID_H
+#define ACID_H
 
-// acid_module.h
-#pragma once
 #include <string>
 #include <vector>
 
@@ -17,3 +17,5 @@ public:
     const std::vector<std::string>& GetAcidID() const;
     const std::vector<int>& GetLvlDwn() const;
 };
+
+#endif
