@@ -1,4 +1,6 @@
-#pragma once
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef CLOTH_DECK_H
+#define CLOTH_DECK_H
 #include <array>
 #include <vector>
 #include <string>
@@ -24,3 +26,4 @@ public:
     const std::array<std::string, 2>& GetYourCloth0() const;
     const std::array<int, 2>& GetYourClothData() const;
 };
+#endif
