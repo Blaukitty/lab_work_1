@@ -1,7 +1,6 @@
-// level.h content
-
-// level_module.h
-#pragma once
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef LEVEL_H
+#define LEVEL_H
 #include "your_carts.h"
 #include "ai.h"
 #include <iostream>
@@ -19,3 +18,4 @@ public:
     int getPlayerLevel() const;
     int getAILevel() const;
 };
+#endif
