@@ -1,0 +1,208 @@
+                                                                              
+   +----------------------+                          
+   |      common.h        |◄───────────────────────────┐                       
+   +----------------------+                            │                       
+               ▲                                        │                       
+               │                                        │                       
+      +--------+--------+        +----------------+      │           +----------+
+      |     Race_class   |──►───►│     Level      │      │           │  AI /    │
+      +------------------+       +----------------+      │           │AI_Learning│
+               ▲                      ▲   ▲   ▲  ▲       │           +----------+
+               │                      │   │   │  │       │              ▲          
+               │                      │   │   │  │       │              │          
+               │                      │   │   │  │       │          +---+---+      
+               │                      │   │   │  │       │          |Logic  |      
+               │                      │   │   │  │       │          +-------+      
+               │                      │   │   │  │       │            ▲  ▲         
+               │                      │   │   │  │       │            │  │         
+   +-----------+----+           +-----+   │   │  │       │            │  │         
+   |     Field       |◄─────────┘         │   │  │       │            │  │         
+   +-----------------+                     │   │  │       │            │  │         
+               ▲                           │   │  │       │            │  │         
+               │                           │   │  │       │            │  │         
+   +-----------+-------------+             │   │  │       │            │  │         
+   |     Doors_deck          |─────────────┘   │  │       │            │  │         
+   +-------------------------+                 │  │       │            │  │         
+               ▲                                │  │       │            │  │         
+               │                                │  │       │            │  │         
+   +-----------+------+   +-----------+     +--+--+--+ +--+------+  +-----+-----+
+   |  Poison_apple    |   |   Acid    |     |Treasure|  | Monsters|  | Cloth_deck|
+   +------------------+   +-----------+     +--------+  +---------+  +-----------+
+                                       ▲                   ▲           ▲          
+                                       │                   │           │          
+                          +------------+--+            +---+---+     +--+---+     
+                          |  Armor, Gloves, Boots, |    | Race_ |     | UI /  |     
+                          |  Protection (Items)    |    | Class |     |Dialogs|     
+                          +------------------------+    +-------+     +------+   
+
+classDiagram
+    class Common {
+        <<utility>>
+    }
+
+    class Race_class {
+        +vector~string~ raceNames
+        +vector~int~ raceHP
+        +vector~int~ raceDmg
+        +vector~int~ raceProt
+        +vector~int~ raceSpd
+        +string chosenRace
+        +string chosenClass
+        +int finalHP
+        +int finalDmg
+        +int finalProt
+        +int finalSpd
+        +GetStatByRaceClass()
+        +getRaceName()
+        +getClassName()
+        +chooseRace(index)
+        +chooseClass(index)
+    }
+
+    class Level {
+        +int playerHealth
+        +int playerDamage
+        +int playerProtection
+        +int playerSpeed
+        +int playerMoney
+        +int aiHealth
+        +int aiDamage
+        +int aiProtection
+        +int aiSpeed
+        +int aiMoney
+        +setPlayerStats(hp, dmg, prot, spd, money)
+        +setAIStats(hp, dmg, prot, spd, money)
+        +levelUpPlayer(delta)
+        +levelUpAI(delta)
+        +reducePlayerHealth(amount)
+        +reduceAIHealth(amount)
+        +getPlayerLevel()
+        +getAILevel()
+        +isGameOver()
+    }
+
+    class Monsters {
+        +vector~string~ monsterNames
+        +vector~int~ speedM
+        +vector~int~ damageM
+        +vector~int~ protectionM
+        +vector~int~ moneyM
+        +IsMonster(name)
+        +GetStatByMonsterName(name)
+        +GetMonsterName()
+    }
+
+    class Acid {
+        +vector~string~ acidID
+        +vector~int~ lvlDown
+        +GetAcidID()
+        +GetLvlDwn()
+    }
+
+    class Poison_apple {
+        +vector~string~ appleID
+        +vector~int~ appleGoals
+        +GetAppleID()
+        +GetAppleGoals()
+    }
+
+    class Treasure {
+        +vector~string~ treasureID
+        +vector~int~ levelUp
+        +GetTreasureID()
+        +GetLwlUp()
+    }
+
+    class Doors_deck {
+        +deque~pair~string,int~ deck
+        +shuffleDeck()
+        +deckSize()
+        +drawAndRecycleCard()
+        +drawInitialPlayerCards()
+    }
+
+    class Armor {
+        +vector~string~ armorID
+        +vector~int~ armorVal
+        +GetArmorID()
+        +GetArmorValue()
+    }
+
+    class Gloves {
+        +vector~string~ glovesID
+        +vector~int~ glovesVal
+        +GetGlovesID()
+        +GetGlovesValue()
+    }
+
+    class Boots {
+        +vector~string~ bootsID
+        +vector~int~ bootsVal
+        +GetBootsID()
+        +GetBootsValue()
+    }
+
+    class Protection {
+        +vector~string~ protectionID
+        +vector~int~ protectionVal
+        +GetProtectionID()
+        +GetProtectionValue()
+    }
+
+    class Cloth_deck {
+        +vector~string~ yourCloth0
+        +vector~int~ yourClothData
+        +random_carts()
+        +GetYourCloth0()
+        +GetYourClothData()
+    }
+
+    class Field {
+        +string enemyName
+        +vector~int~ enemyData
+        +bool isEnemyMonster
+        +loadMonstersFromDeck(mons)
+        +setEnemyCard(name, stat)
+        +getEnemyName()
+        +getEnemyDataSum()
+        +isCurrentEnemyMonster()
+    }
+
+    class Logic {
+        +run()
+        +userAction()
+        +aiAction()
+    }
+
+    class AI {
+        +makeMove(enemyDataSum, myDataSum)
+        +chooseDoorCard()
+        +chooseClothCard()
+        +receiveReward(rewardValue)
+    }
+
+    class AI_Learning {
+        +updateModel()
+        +saveModel(path)
+        +loadModel(path)
+    }
+
+    class Choose_cart_bottom {
+        +displayOptions(deck)
+        +pickCard(index)
+    }
+
+    class Couse_troubles_bottom {
+        +displayOptions(deck)
+        +pickCard(index)
+    }
+
+    class Your_carts {
+        +vector~string~ yourCardNames
+        +vector~int~ yourCardValues
+        +GetYourCards()
+        +AddCard(name, value)
+        +RemoveCard(name)
+    }
+
+                                                                                  
