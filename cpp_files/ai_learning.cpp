@@ -1,5 +1,4 @@
-// ai_learning.cpp content
-
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 
 #include "ai_learning.h"
 
