@@ -1,6 +1,4 @@
-// protection.cpp content
-
-// protection_module.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "protection.h"
 
 Protection::Protection() {
