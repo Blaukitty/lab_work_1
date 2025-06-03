@@ -4,7 +4,7 @@
 #include "treasure.h"       
 #include "poison_apple.h"  
 #include "doors_deck.h"     
-#include "clothes_deck.h"   
+#include "cloth_deck.h"   
 #include "boots.h"          
 #include "armor.h"          
 #include "gloves.h"         
