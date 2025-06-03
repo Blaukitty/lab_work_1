@@ -1,5 +1,5 @@
 CXX := g++
-CXXFLAGS := -std=c++11 -Wall -Wextra -Iheaders
+CXXFLAGS := -std=c++14 -Wall -Wextra -Iheaders
 
 SRC_DIR := cpp_files
 HDR_DIR := headers
