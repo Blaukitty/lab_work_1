@@ -1,6 +1,6 @@
 //Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #ifndef BOOTS_H
-#DEFINE BOOTS_H
+#define BOOTS_H
 #include <string>
 #include <vector>
 
