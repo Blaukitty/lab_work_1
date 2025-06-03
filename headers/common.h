@@ -1,6 +1,9 @@
-#pragma once
+#ifndef COMMON_H
+#define COMMON_H
+
 #include <iostream>
 struct CardData {
-    string name;
+    std::string name;
     int data;
 };
+#endif
