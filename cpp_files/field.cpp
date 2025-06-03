@@ -1,11 +1,8 @@
-// field.cpp content
-
-// field_module.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "field.h"
 #include <iostream>
 
 void Field::loadMonstersFromDeck(const Monsters& mons) {
-    // Example: Load the first monster from the deck as the current enemy
     if (!mons.GetMonsterName().empty()) {
         Cart_enemy = mons.GetMonsterName()[0];
         Data_enemy = mons.GetStatByMonsterName(Cart_enemy);
