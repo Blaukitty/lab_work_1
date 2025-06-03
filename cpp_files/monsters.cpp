@@ -1,7 +1,4 @@
-// monsters.cpp content
-
-
-// monsters_module.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "monsters.h"
 #include <algorithm>
 
