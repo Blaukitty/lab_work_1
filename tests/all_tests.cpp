@@ -57,9 +57,9 @@ TEST(TreasureTest, Id_Levels) {
 
 
 TEST(DoorsDeckTest, Sise) {
-    DummyPoisonApple apple;
+    PoisonApple apple;
     Acid acid;
-    DummyTreasure treasure;
+    Treasure treasure;
     Monsters monsters;
     Doors_deck deck{apple, acid, treasure, monsters};
     EXPECT_EQ(deck.deckSize(), 2 + 3 + 3 + 12);
@@ -69,9 +69,9 @@ TEST(DoorsDeckTest, Sise) {
 }
 
 TEST(DoorsDeckTest, Recycle) {
-    DummyPoisonApple apple;
+    PoisonApple apple;
     Acid acid;
-    DummyTreasure treasure;
+    Treasure treasure;
     Monsters monsters;
     Doors_deck deck{apple, acid, treasure, monsters};
     size_t originalSize = deck.deckSize();
