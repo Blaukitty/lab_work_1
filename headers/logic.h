@@ -1,4 +1,6 @@
-#pragma once
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef LOGIC_H
+#define LOGIC_H
 
 #include <iostream>
 #include "your_carts.h"
@@ -26,3 +28,4 @@ public:
     /// Останавливает игровой цикл.
     void end();
 };
+#endif
