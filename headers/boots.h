@@ -1,22 +1,18 @@
-// boots.h content
-
-// boots_module.h
-#pragma once
+//Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
+#ifndef BOOTS_H
+#DEFINE BOOTS_H
 #include <string>
 #include <vector>
 
-using namespace std;
-
 class Boots {
 private:
-    vector<string> boots_id;
-    vector<int> boots_speed;
-
+    std::vector<string> boots_id;
+    std::vector<int> boots_speed;
     void setup_boots();
 
 public:
     Boots();
-    const vector<string>& GetBootsID() const;
-    const vector<int>& GetBootsSpeed() const;
+    const std::vector<std::string>& GetBootsID() const;
+    const std::vector<int>& GetBootsSpeed() const;
 };
-
+#endif
