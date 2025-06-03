@@ -1,11 +1,7 @@
-// your_carts.cpp content
-
-// your_carts.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "your_carts.h"
-#include "race_class.h"    // Для классов race и cl_ass
+#include "race_class.h"    
 #include <iostream>
-
-using namespace std;
 
 your_carts::your_carts()
     : player_id(0), cloth_goals(0), treasure_goals(0), damage(1), 
@@ -13,13 +9,13 @@ your_carts::your_carts()
       Data{0, 0, 0, 0}, Carts{"", "", "", ""} {}
 
 void your_carts::showStatus(const race& ra, const cl_ass& as) {
-    cout << "\n--- Player Status (>.<)  ---\n";
-    cout << " Race: " << ra.race_n << endl;
-    cout << " Class: " << as.cl_ass_n << endl;
-    cout << " Damage: " << damage << endl;
-    cout << " Protection: " << protection << endl;
-    cout << " Speed: " << speed << endl;
-    cout << " Money: " << money << endl;
+    std::cout << "\n--- Player Status (>.<)  ---\n";
+    std::cout << " Race: " << ra.race_n << std::endl;
+    std::cout << " Class: " << as.cl_ass_n << std::endl;
+    std::cout << " Damage: " << damage << std::endl;
+    std::cout << " Protection: " << protection << std::endl;
+    std::cout << " Speed: " << speed << std::endl;
+    std::cout << " Money: " << money << std::endl;
 }
 
 void your_carts::carts_getting(const Cloth_deck& cl) {
@@ -35,13 +31,13 @@ void your_carts::data_getting(const Cloth_deck& cl) {
 }
 
 void your_carts::showCarts() {
-    cout << "\n--- Player Carts (^^) ---\n";
-    cout << "Cloth Cards:\n";
+    std::cout << "\n--- Player Carts (^^) ---\n";
+    std::cout << "Cloth Cards:\n";
     for (int i = 0; i < 2; i++) {
-        cout << Carts[i] << " ... " << Data[i] << "\n";
+        std::cout << Carts[i] << " ... " << Data[i] << "\n";
     }
-    cout << "Door Cards:\n";
+    std::cout << "Door Cards:\n";
     for (int i = 2; i < 4; i++) {
-        cout << Carts[i] << " ... " << Data[i] << "\n";
+        std::cout << Carts[i] << " ... " << Data[i] << "\n";
     }
 }
