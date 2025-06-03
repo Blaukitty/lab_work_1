@@ -57,7 +57,7 @@ TEST(TreasureTest, Id_Levels) {
 
 
 TEST(DoorsDeckTest, Sise) {
-    PoisonApple apple;
+    Poison_apple apple;
     Acid acid;
     Treasure treasure;
     Monsters monsters;
@@ -69,7 +69,7 @@ TEST(DoorsDeckTest, Sise) {
 }
 
 TEST(DoorsDeckTest, Recycle) {
-    PoisonApple apple;
+    Poison_apple apple;
     Acid acid;
     Treasure treasure;
     Monsters monsters;
