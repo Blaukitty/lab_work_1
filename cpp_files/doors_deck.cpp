@@ -39,7 +39,7 @@ Doors_deck::Doors_deck(const Poison_apple& apple, const Acid& acid,
     shuffleDeck();
 }
 
-pair<std::string, std::vector<int>> Doors_deck::drawAndRecycleCard() {
+std::pair<std::string, std::vector<int>> Doors_deck::drawAndRecycleCard() {
     if (deck.empty()) return {"", {0, 0, 0, 0}};
 
     auto card = deck.front();
