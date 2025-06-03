@@ -1,6 +1,4 @@
-// gloves.cpp content
-
-// gloves_module.cpp
+// Rodionova Ksenia 24-Б81-мм st132496@student.spbu.ru
 #include "gloves.h"
 
 Gloves::Gloves() {
