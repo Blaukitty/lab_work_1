@@ -1,20 +1,20 @@
 # lab_work_1
 Rodionova Ksenia 24-Б81-мм    ksusha007r@gmail.com
 
-Необходимо:
-c++11
-g++
+Required:
+c++11 for the game itself, c++14 for tests,
+g++,
 libgtest-dev cmake
 
-Сборка:
+Build:
 make clean
 make all
 
-Запуск:
+Run:
 ./build/game
 
-Запуск тестов:
+Run tests:
 make test
 
-Очистка:
+Clean:
 make clean
