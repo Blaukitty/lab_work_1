@@ -6,7 +6,7 @@
 
 class Boots {
 private:
-    std::vector<string> boots_id;
+    std::vector<std::string> boots_id;
     std::vector<int> boots_speed;
     void setup_boots();
 
