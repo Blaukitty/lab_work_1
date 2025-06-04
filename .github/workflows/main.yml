@@ -38,6 +38,7 @@ jobs:
         run: |
           make test
 
-     # - name: Run executable  убираем этот кусок, потому что игра требует неоднократного 
-     #   run: |                ввода с клавиатуры и этот кусок висит.
-     #     ./build/game
+      - name: Run executable   
+        run: | 
+          printf "choose\n2\n0\nchoose\n3\n1\n2\nchoose\n2\n0\nchoose\n2\n0\nchoose\n2\n0\nchoose\n2\n0\nchoose\n2\n0\nchoose\n2\n0\nchoose\n2\n0\nchoose\n2\n0\nchoose\n2\n0"
+          | ./build/game
